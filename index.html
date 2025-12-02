@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista de Convidados - Casamento Eduardo & Emilly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #0b0711;
+      --bg-card: #140a20;
+      --bg-card-soft: #1b0f29;
+      --accent: #b832ff;
+      --accent-soft: rgba(184, 50, 255, 0.15);
+      --accent-strong: #ff63d9;
+      --text: #f9f5ff;
+      --muted: #c3b7e6;
+      --danger: #ff4b6e;
+      --border: #2a183b;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #2b1144 0, #050208 55%);
+      color: var(--text);
+      font-family: var(--font-main);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 16px 40px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1120px;
+      background: radial-gradient(circle at top left, #1d102c 0, #09030f 65%);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow-soft);
+      padding: 22px 18px 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 720px) {
+      .app {
+        padding: 24px 24px 28px;
+      }
+    }
+
+    .app::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at 0 0, rgba(255, 102, 204, 0.22), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(102, 204, 255, 0.18), transparent 50%);
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fdf6ff;
+    }
+
+    .tag-love {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: radial-gradient(circle at 0 0, rgba(255, 99, 217, 0.6), transparent 60%),
+        rgba(10, 3, 20, 0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-love span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .subtitle {
+      font-size: 0.83rem;
+      color: var(--muted);
+      opacity: 0.85;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    button,
+    select {
+      font-family: inherit;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast), opacity var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0b0411;
+      box-shadow: 0 12px 25px rgba(184, 50, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(184, 50, 255, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon {
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.02);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .btn-icon:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .btn-danger {
+      border-color: rgba(255, 75, 110, 0.5);
+      color: #ffc6d4;
+    }
+
+    .btn-danger:hover {
+      background: rgba(255, 75, 110, 0.14);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.72rem;
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      gap: 4px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 880px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top, #251437 0, #110616 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 14px 14px 16px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.06), transparent 55%);
+      opacity: 0.6;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fef2ff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-subtitle {
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+
+    .card-header h3 span {
+      font-size: 0.9rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .stat-card {
+      border-radius: var(--radius-md);
+      padding: 6px 8px 7px;
+      background: rgba(7, 2, 14, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.09), transparent 60%);
+      opacity: 0.5;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .stat-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .stat-badge {
+      font-size: 0.7rem;
+      color: #d4c3ff;
+      opacity: 0.9;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .dot-all {
+      background: linear-gradient(135deg, #ffd166, #ff6b6b);
+    }
+
+    .dot-confirmed {
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+    }
+
+    .dot-maybe {
+      background: linear-gradient(135deg, #facc15, #eab308);
+    }
+
+    .dot-declined {
+      background: linear-gradient(135deg, #fb7185, #ef4444);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      background: rgba(4, 2, 8, 0.9);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--text);
+      padding: 6px 9px;
+      font-size: 0.82rem;
+      outline: none;
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+      max-height: 120px;
+    }
+
+    input[type="text"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(184, 50, 255, 0.9);
+      box-shadow: 0 0 0 1px rgba(184, 50, 255, 0.5);
+      background: rgba(8, 2, 18, 0.98);
+      transform: translateY(-0.5px);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(211, 204, 239, 0.6);
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+      gap: 6px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .filters-left,
+    .filters-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .input-inline {
+      position: relative;
+    }
+
+    .input-inline input {
+      padding-left: 24px;
+      padding-right: 9px;
+    }
+
+    .input-inline span {
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .select-compact {
+      padding: 5px 24px 5px 8px;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      background: rgba(2, 0, 5, 0.95);
+    }
+
+    .table-wrapper {
+      max-height: 380px;
+      overflow: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(7, 2, 15, 0.92);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+      background: rgba(4, 0, 8, 0.96);
+      backdrop-filter: blur(14px);
+      z-index: 2;
+    }
+
+    th,
+    td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(227, 217, 255, 0.85);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+      transform: translateY(-0.5px);
+    }
+
+    .col-name {
+      width: 32%;
+    }
+
+    .col-side {
+      width: 14%;
+      white-space: nowrap;
+    }
+
+    .col-status {
+      width: 17%;
+    }
+
+    .col-notes {
+      width: 27%;
+    }
+
+    .col-actions {
+      width: 10%;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .status-select {
+      width: 100%;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      border-width: 1px;
+    }
+
+    .status-pending {
+      border-color: rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+    }
+
+    .status-confirmed {
+      border-color: rgba(34, 197, 94, 0.9);
+      background: rgba(22, 163, 74, 0.12);
+      color: #bbf7d0;
+    }
+
+    .status-maybe {
+      border-color: rgba(234, 179, 8, 0.9);
+      background: rgba(202, 138, 4, 0.14);
+      color: #fef3c7;
+    }
+
+    .status-declined {
+      border-color: rgba(239, 68, 68, 0.9);
+      background: rgba(220, 38, 38, 0.12);
+      color: #fecaca;
+    }
+
+    .pill-side {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(12, 4, 24, 0.9);
+      color: rgba(244, 244, 255, 0.9);
+    }
+
+    .pill-side span {
+      font-size: 0.8rem;
+    }
+
+    .side-emilly {
+      border-color: rgba(244, 114, 182, 0.9);
+      background: rgba(236, 72, 153, 0.12);
+    }
+
+    .side-eduardo {
+      border-color: rgba(56, 189, 248, 0.9);
+      background: rgba(37, 99, 235, 0.15);
+    }
+
+    .side-both {
+      border-color: rgba(129, 140, 248, 0.9);
+      background: rgba(129, 140, 248, 0.15);
+    }
+
+    .notes-text {
+      color: rgba(226, 232, 240, 0.9);
+      font-size: 0.8rem;
+      max-width: 260px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .notes-empty {
+      color: rgba(148, 163, 184, 0.9);
+      font-size: 0.72rem;
+      font-style: italic;
+    }
+
+    .badge-status-table {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      gap: 5px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+    }
+
+    .badge-status-table span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .badge-status-pending {
+      background: rgba(15, 23, 42, 0.85);
+      color: #e2e8f0;
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .badge-status-pending span {
+      background: linear-gradient(135deg, #e5e7eb, #9ca3af);
+    }
+
+    .badge-status-confirmed {
+      background: rgba(22, 163, 74, 0.12);
+      color: #bbf7d0;
+      border-color: rgba(34, 197, 94, 0.9);
+    }
+
+    .badge-status-confirmed span {
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+    }
+
+    .badge-status-maybe {
+      background: rgba(202, 138, 4, 0.14);
+      color: #fef3c7;
+      border-color: rgba(234, 179, 8, 0.9);
+    }
+
+    .badge-status-maybe span {
+      background: linear-gradient(135deg, #facc15, #eab308);
+    }
+
+    .badge-status-declined {
+      background: rgba(220, 38, 38, 0.12);
+      color: #fecaca;
+      border-color: rgba(239, 68, 68, 0.9);
+    }
+
+    .badge-status-declined span {
+      background: linear-gradient(135deg, #fb7185, #ef4444);
+    }
+
+    .text-small {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.74rem;
+      color: rgba(209, 213, 219, 0.9);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      opacity: 0.9;
+    }
+
+    .footer-note strong {
+      color: #f9fafb;
+    }
+
+    .highlight {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .empty-state {
+      padding: 16px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .empty-state span {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .empty-state .emoji {
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="title-group">
+        <div class="title-row">
+          <h1>Lista de convidados</h1>
+          <div class="tag-love">
+            <span>💍</span>
+            <span>Eduardo &amp; Emilly — Amor eterno</span>
+          </div>
+        </div>
+        <div class="subtitle">
+          Controle de presença, organização e amor em um só lugar.
+        </div>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn btn-outline" id="loadDefaultBtn">
+          💫 Carregar lista Eduardo &amp; Emilly
+        </button>
+        <button type="button" class="btn btn-outline" id="clearAllBtn">
+          🧹 Limpar tudo
+        </button>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-label">
+          <span class="badge-dot dot-all"></span>
+          Total convidados
+        </div>
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-badge" id="statTotalSide"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">
+          <span class="badge-dot dot-confirmed"></span>
+          Confirmados
+        </div>
+        <div class="stat-value" id="statConfirmed">0</div>
+        <div class="stat-badge" id="statConfirmedPercent">0%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">
+          <span class="badge-dot dot-maybe"></span>
+          Talvez
+        </div>
+        <div class="stat-value" id="statMaybe">0</div>
+        <div class="stat-badge" id="statMaybePercent">0%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">
+          <span class="badge-dot dot-declined"></span>
+          Não vai
+        </div>
+        <div class="stat-value" id="statDeclined">0</div>
+        <div class="stat-badge" id="statDeclinedPercent">0%</div>
+      </div>
+    </div>
+
+    <div class="layout">
+      <!-- FORMULÁRIO -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <span>➕</span>
+              <span>Novo convidado</span>
+            </div>
+            <div class="card-subtitle">
+              Adicione pessoas e mantenha tudo organizado.
+            </div>
+          </div>
+          <div class="chip">
+            💾
+            <span class="text-small">Salvo automaticamente no navegador</span>
+          </div>
+        </div>
+
+        <form id="guestForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="guestName">Nome</label>
+              <input
+                type="text"
+                id="guestName"
+                placeholder="Ex: Tia Ana, João, Amigos do Eduardo"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="guestSide">Lado</label>
+              <select id="guestSide">
+                <option value="Emilly">Emilly</option>
+                <option value="Eduardo">Eduardo</option>
+                <option value="Ambos">Ambos</option>
+                <option value="Outro">Outro / Família mista</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="guestStatus">Status</label>
+              <select id="guestStatus">
+                <option value="pending">Não respondeu</option>
+                <option value="confirmed">Confirmado</option>
+                <option value="maybe">Talvez</option>
+                <option value="declined">Não vai</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="guestNotes">Observações</label>
+              <input
+                type="text"
+                id="guestNotes"
+                placeholder="Ex: casal com 2 filhos, prefere mesa perto da saída..."
+              />
+            </div>
+          </div>
+          <div class="form-footer">
+            <button type="button" class="btn btn-outline" id="resetFormBtn">
+              Limpar campos
+            </button>
+            <button type="submit" class="btn btn-primary">
+              💌 Adicionar convidado
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- TABELA -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <span>📋</span>
+              <span>Lista de convidados</span>
+            </div>
+            <div class="card-subtitle">
+              Atualize status de presença direto na lista.
+            </div>
+          </div>
+        </div>
+
+        <div class="filters">
+          <div class="filters-left">
+            <div class="input-inline">
+              <span>🔍</span>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Buscar por nome..."
+                style="padding-right: 26px;"
+              />
+            </div>
+            <select id="filterSide" class="select-compact">
+              <option value="all">Lado: Todos</option>
+              <option value="Emilly">Só Emilly</option>
+              <option value="Eduardo">Só Eduardo</option>
+              <option value="Ambos">Ambos</option>
+              <option value="Outro">Outro / Mistos</option>
+            </select>
+            <select id="filterStatus" class="select-compact">
+              <option value="all">Status: Todos</option>
+              <option value="pending">Não respondeu</option>
+              <option value="confirmed">Confirmado</option>
+              <option value="maybe">Talvez</option>
+              <option value="declined">Não vai</option>
+            </select>
+          </div>
+          <div class="filters-right">
+            <button type="button" class="btn-icon" id="exportJsonBtn" title="Exportar como JSON">
+              ⬇️
+            </button>
+          </div>
+        </div>
+
+        <div class="table-wrapper" id="tableWrapper">
+          <table>
+            <thead>
+              <tr>
+                <th class="col-name">Nome</th>
+                <th class="col-side">Lado</th>
+                <th class="col-status">Status</th>
+                <th class="col-notes">Observações</th>
+                <th class="col-actions">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="guestTableBody">
+              <!-- Linhas geradas via JS -->
+            </tbody>
+          </table>
+          <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="emoji">✨</div>
+            <span>Sem convidados ainda...</span>
+            <span>
+              Use o botão <strong>"Carregar lista Eduardo &amp; Emilly"</strong> ou adicione manualmente no formulário ao lado.
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer-note">
+      <div>
+        <strong>Dica:</strong> este controle fica salvo no seu navegador. Se limpar o cache ou usar outro dispositivo, a lista some.
+      </div>
+      <div>
+        Feito com <span class="highlight">💜 amor</span> pro casamento de vocês.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ------------------------------
+    // Dados iniciais da lista padrão
+    // ------------------------------
+    const defaultGuests = [
+      // Parte da Emilly
+      { name: "Elza", side: "Emilly" },
+      { name: "Lucivaldo", side: "Emilly" },
+      { name: "Cyndell", side: "Emilly" },
+      { name: "Heloysa", side: "Emilly" },
+      { name: "Selma", side: "Emilly" },
+      { name: "Saline", side: "Emilly" },
+      { name: "Paulo", side: "Emilly" },
+      { name: "Gabi", side: "Emilly" },
+      { name: "Salin", side: "Emilly" },
+      { name: "Niquita", side: "Emilly" },
+      { name: "Marcos", side: "Emilly" },
+      { name: "João", side: "Emilly" },
+      { name: "Garcia", side: "Emilly" },
+      { name: "Ramile", side: "Emilly" },
+      { name: "Maria", side: "Emilly" },
+      { name: "Simon", side: "Emilly" },
+      { name: "Raquel", side: "Emilly" },
+      { name: "Antônio", side: "Emilly" },
+      { name: "Carol", side: "Emilly" },
+      { name: "Firmino", side: "Emilly" },
+      { name: "Gabriel", side: "Emilly" },
+      { name: "Mulher Gabriel", side: "Emilly" },
+      { name: "Vinicius", side: "Emilly" },
+      { name: "Gi", side: "Emilly" },
+      { name: "Laura", side: "Emilly" },
+      { name: "Jaqueline", side: "Emilly" },
+      { name: "Eduardo da Jaqueline", side: "Emilly" },
+      { name: "Taiana", side: "Emilly" },
+      { name: "Jassiara", side: "Emilly" },
+      { name: "Rosalina", side: "Emilly" },
+      { name: "Eliane", side: "Emilly" },
+      { name: "Fernando", side: "Emilly" },
+      { name: "Julia filha Eliane", side: "Emilly" },
+      { name: "Yaskara", side: "Emilly" },
+      { name: "Valentina", side: "Emilly" },
+      { name: "Maria (2)", side: "Emilly" },
+      { name: "Vó Anita", side: "Emilly" },
+      { name: "Marido Vó Anita", side: "Emilly" },
+
+      // Parte do Eduardo
+      { name: "Dilamar", side: "Eduardo" },
+      { name: "Geneci", side: "Eduardo" },
+      { name: "Kiko", side: "Eduardo" },
+      { name: "Antonni", side: "Eduardo" },
+      { name: "Sara", side: "Eduardo" },
+      { name: "Nair", side: "Eduardo" },
+      { name: "Dete", side: "Eduardo" },
+      { name: "Dionatan", side: "Eduardo" },
+      { name: "Aline", side: "Eduardo" },
+      { name: "Filho 1 Aline", side: "Eduardo" },
+      { name: "Filho 2 Aline", side: "Eduardo" },
+      { name: "Marido Aline", side: "Eduardo" },
+      { name: "Alisson", side: "Eduardo" },
+      { name: "Mulher Alisson", side: "Eduardo" },
+      { name: "Pame", side: "Eduardo" },
+      { name: "Leno", side: "Eduardo" },
+      { name: "Bruno", side: "Eduardo" },
+      { name: "Henrique", side: "Eduardo" },
+      { name: "Gustavo", side: "Eduardo" },
+      { name: "Leo", side: "Eduardo" },
+      { name: "Beneficio", side: "Eduardo" },
+      { name: "Carol", side: "Eduardo" },
+      { name: "Gelair", side: "Eduardo" },
+      { name: "Carol 2", side: "Eduardo" },
+      { name: "Christian", side: "Eduardo" },
+      { name: "Anderson", side: "Eduardo" },
+      { name: "Cleide", side: "Eduardo" },
+      { name: "Chica", side: "Eduardo" },
+      { name: "Josue", side: "Eduardo" },
+      { name: "Joao Lucas", side: "Eduardo" },
+      { name: "Janda", side: "Eduardo" },
+      { name: "Filha Janda", side: "Eduardo" },
+      { name: "Filho 1 Janda", side: "Eduardo" },
+      { name: "Filho 2 Janda", side: "Eduardo" },
+      { name: "Aderlan", side: "Eduardo" },
+      { name: "Mulher Aderlan", side: "Eduardo" },
+      { name: "Filha Aderlan", side: "Eduardo" }
+    ];
+
+    // ------------------------------
+    // Estado principal
+    // ------------------------------
+    let guests = [];
+    const STORAGE_KEY = "wedding-guests-eduardo-emilly";
+
+    // ------------------------------
+    // Helpers
+    // ------------------------------
+    function saveGuests() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(guests));
+    }
+
+    function loadGuests() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (e) {
+        console.warn("Erro ao ler localStorage:", e);
+      }
+      return [];
+    }
+
+    function createGuestId() {
+      return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
+    }
+
+    function statusLabel(status) {
+      switch (status) {
+        case "confirmed":
+          return "Confirmado";
+        case "maybe":
+          return "Talvez";
+        case "declined":
+          return "Não vai";
+        default:
+          return "Não respondeu";
+      }
+    }
+
+    function sideLabel(side) {
+      switch (side) {
+        case "Emilly":
+          return "Emilly";
+        case "Eduardo":
+          return "Eduardo";
+        case "Ambos":
+          return "Ambos";
+        case "Outro":
+          return "Outro";
+        default:
+          return side || "N/D";
+      }
+    }
+
+    function sideClass(side) {
+      if (side === "Emilly") return "side-emilly";
+      if (side === "Eduardo") return "side-eduardo";
+      if (side === "Ambos") return "side-both";
+      return "";
+    }
+
+    function statusClass(status) {
+      switch (status) {
+        case "confirmed":
+          return "status-confirmed";
+        case "maybe":
+          return "status-maybe";
+        case "declined":
+          return "status-declined";
+        default:
+          return "status-pending";
+      }
+    }
+
+    function statusBadgeClass(status) {
+      switch (status) {
+        case "confirmed":
+          return "badge-status-table badge-status-confirmed";
+        case "maybe":
+          return "badge-status-table badge-status-maybe";
+        case "declined":
+          return "badge-status-table badge-status-declined";
+        default:
+          return "badge-status-table badge-status-pending";
+      }
+    }
+
+    function updateStats() {
+      const total = guests.length;
+      const confirmed = guests.filter(g => g.status === "confirmed").length;
+      const maybe = guests.filter(g => g.status === "maybe").length;
+      const declined = guests.filter(g => g.status === "declined").length;
+
+      const emillyCount = guests.filter(g => g.side === "Emilly").length;
+      const eduardoCount = guests.filter(g => g.side === "Eduardo").length;
+
+      const pct = v => (total > 0 ? Math.round((v / total) * 100) : 0);
+
+      document.getElementById("statTotal").textContent = total;
+      document.getElementById("statConfirmed").textContent = confirmed;
+      document.getElementById("statMaybe").textContent = maybe;
+      document.getElementById("statDeclined").textContent = declined;
+
+      document.getElementById("statConfirmedPercent").textContent =
+        pct(confirmed) + "%";
+      document.getElementById("statMaybePercent").textContent =
+        pct(maybe) + "%";
+      document.getElementById("statDeclinedPercent").textContent =
+        pct(declined) + "%";
+
+      const statTotalSide = document.getElementById("statTotalSide");
+      if (total === 0) {
+        statTotalSide.textContent = "";
+      } else {
+        statTotalSide.textContent =
+          `Emilly: ${emillyCount} · Eduardo: ${eduardoCount}`;
+      }
+    }
+
+    function renderGuests() {
+      const tbody = document.getElementById("guestTableBody");
+      const emptyState = document.getElementById("emptyState");
+
+      tbody.innerHTML = "";
+
+      const search = document
+        .getElementById("searchInput")
+        .value.trim()
+        .toLowerCase();
+      const filterSide = document.getElementById("filterSide").value;
+      const filterStatus = document.getElementById("filterStatus").value;
+
+      const filtered = guests.filter(g => {
+        if (search && !g.name.toLowerCase().includes(search)) return false;
+        if (filterSide !== "all" && g.side !== filterSide) return false;
+        if (filterStatus !== "all" && g.status !== filterStatus) return false;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        emptyState.style.display = "block";
+        return;
+      } else {
+        emptyState.style.display = "none";
+      }
+
+      filtered.forEach(guest => {
+        const tr = document.createElement("tr");
+
+        // Nome
+        const tdName = document.createElement("td");
+        tdName.className = "col-name";
+        tdName.textContent = guest.name;
+        tr.appendChild(tdName);
+
+        // Lado
+        const tdSide = document.createElement("td");
+        tdSide.className = "col-side";
+        const pill = document.createElement("div");
+        pill.className = `pill-side ${sideClass(guest.side)}`;
+        pill.innerHTML = `<span>${
+          guest.side === "Emilly"
+            ? "💜"
+            : guest.side === "Eduardo"
+            ? "💙"
+            : "🤍"
+        }</span><span>${sideLabel(guest.side)}</span>`;
+        tdSide.appendChild(pill);
+        tr.appendChild(tdSide);
+
+        // Status
+        const tdStatus = document.createElement("td");
+        tdStatus.className = "col-status";
+        const select = document.createElement("select");
+        select.className = `status-select ${statusClass(guest.status)}`;
+        select.innerHTML = `
+          <option value="pending">Não respondeu</option>
+          <option value="confirmed">Confirmado</option>
+          <option value="maybe">Talvez</option>
+          <option value="declined">Não vai</option>
+        `;
+        select.value = guest.status || "pending";
+        select.addEventListener("change", () => {
+          guest.status = select.value;
+          select.className = `status-select ${statusClass(guest.status)}`;
+          saveGuests();
+          updateStats();
+        });
+        tdStatus.appendChild(select);
+
+        const badge = document.createElement("div");
+        badge.className = statusBadgeClass(guest.status || "pending");
+        const dot = document.createElement("span");
+        const label = document.createElement("span");
+        label.textContent = statusLabel(guest.status);
+        badge.appendChild(dot);
+        badge.appendChild(label);
+        badge.style.marginTop = "4px";
+        tdStatus.appendChild(badge);
+
+        tr.appendChild(tdStatus);
+
+        // Observações
+        const tdNotes = document.createElement("td");
+        tdNotes.className = "col-notes";
+        if (guest.notes && guest.notes.trim()) {
+          const spanNotes = document.createElement("span");
+          spanNotes.className = "notes-text";
+          spanNotes.textContent = guest.notes;
+          tdNotes.appendChild(spanNotes);
+        } else {
+          const spanEmpty = document.createElement("span");
+          spanEmpty.className = "notes-empty";
+          spanEmpty.textContent = "Sem observações";
+          tdNotes.appendChild(spanEmpty);
+        }
+        tr.appendChild(tdNotes);
+
+        // Ações
+        const tdActions = document.createElement("td");
+        tdActions.className = "col-actions";
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.type = "button";
+        deleteBtn.className = "btn-icon btn-danger";
+        deleteBtn.title = "Remover convidado";
+        deleteBtn.textContent = "✖";
+        deleteBtn.addEventListener("click", () => {
+          if (
+            confirm(
+              `Remover "${guest.name}" da lista? Essa ação não pode ser desfeita.`
+            )
+          ) {
+            guests = guests.filter(g => g.id !== guest.id);
+            saveGuests();
+            updateStats();
+            renderGuests();
+          }
+        });
+
+        tdActions.appendChild(deleteBtn);
+        tr.appendChild(tdActions);
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ------------------------------
+    // Inicialização
+    // ------------------------------
+    function init() {
+      guests = loadGuests();
+      updateStats();
+      renderGuests();
+
+      // Formulário
+      const form = document.getElementById("guestForm");
+      const resetFormBtn = document.getElementById("resetFormBtn");
+      const nameInput = document.getElementById("guestName");
+      const sideInput = document.getElementById("guestSide");
+      const statusInput = document.getElementById("guestStatus");
+      const notesInput = document.getElementById("guestNotes");
+
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const name = nameInput.value.trim();
+        if (!name) return;
+
+        const newGuest = {
+          id: createGuestId(),
+          name,
+          side: sideInput.value || "Outro",
+          status: statusInput.value || "pending",
+          notes: notesInput.value.trim()
+        };
+
+        guests.push(newGuest);
+        saveGuests();
+        updateStats();
+        renderGuests();
+        form.reset();
+        sideInput.value = "Emilly";
+        statusInput.value = "pending";
+        nameInput.focus();
+      });
+
+      resetFormBtn.addEventListener("click", () => {
+        form.reset();
+        sideInput.value = "Emilly";
+        statusInput.value = "pending";
+        nameInput.focus();
+      });
+
+      // Filtros
+      document.getElementById("searchInput").addEventListener("input", renderGuests);
+      document.getElementById("filterSide").addEventListener("change", renderGuests);
+      document.getElementById("filterStatus").addEventListener("change", renderGuests);
+
+      // Botão carregar lista padrão
+      document.getElementById("loadDefaultBtn").addEventListener("click", () => {
+        const proceed =
+          guests.length === 0 ||
+          confirm(
+            "Isso vai adicionar os convidados padrão Eduardo & Emilly à lista atual.\n\nDeseja continuar?"
+          );
+
+        if (!proceed) return;
+
+        const existingNames = new Set(
+          guests.map(g => `${g.name.toLowerCase()}|${g.side}`)
+        );
+
+        defaultGuests.forEach(g => {
+          const key = `${g.name.toLowerCase()}|${g.side}`;
+          if (!existingNames.has(key)) {
+            guests.push({
+              id: createGuestId(),
+              name: g.name,
+              side: g.side,
+              status: "pending",
+              notes: ""
+            });
+          }
+        });
+
+        saveGuests();
+        updateStats();
+        renderGuests();
+      });
+
+      // Botão limpar tudo
+      document.getElementById("clearAllBtn").addEventListener("click", () => {
+        if (
+          confirm(
+            "Tem certeza que deseja limpar TODOS os convidados?\n\nEssa ação não pode ser desfeita."
+          )
+        ) {
+          guests = [];
+          saveGuests();
+          updateStats();
+          renderGuests();
+        }
+      });
+
+      // Exportar JSON (só exibe em prompt)
+      document.getElementById("exportJsonBtn").addEventListener("click", () => {
+        if (guests.length === 0) {
+          alert("Não há convidados para exportar.");
+          return;
+        }
+        const data = JSON.stringify(guests, null, 2);
+        // Mostra um prompt simplão com o JSON (pra copiar)
+        const w = window.open("", "_blank");
+        if (w) {
+          w.document.write(
+            "<pre style='white-space: pre-wrap; font-family: monospace; font-size: 13px;'>" +
+              data.replace(/</g, "&lt;") +
+              "</pre>"
+          );
+          w.document.close();
+        } else {
+          alert("Copie os dados a seguir:\n\n" + data);
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
