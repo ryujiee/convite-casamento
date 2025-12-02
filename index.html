@@ -2,28 +2,38 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Lista de Convidados - Casamento Eduardo & Emilly</title>
+  <title>Lista de Convidados - Eduardo & Emilly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonte script parecida com convite -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0b0711;
-      --bg-card: #140a20;
-      --bg-card-soft: #1b0f29;
-      --accent: #b832ff;
-      --accent-soft: rgba(184, 50, 255, 0.15);
-      --accent-strong: #ff63d9;
-      --text: #f9f5ff;
-      --muted: #c3b7e6;
-      --danger: #ff4b6e;
-      --border: #2a183b;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      --bg: #ffeef5;
+      --bg-soft: #fff4fa;
+      --bg-card: #ffffff;
+      --bg-card-soft: #fdf8ff;
+      --border-soft: #f1d6e6;
+      --border-strong: #f3c0dc;
+      --accent: #ff6fae;
+      --accent-strong: #ff4f93;
+      --accent-soft: rgba(255, 111, 174, 0.1);
+      --accent-soft-2: rgba(255, 111, 174, 0.18);
+      --accent-blue: #9bd4ff;
+      --text-main: #5b3455;
+      --text-soft: #8c607e;
+      --text-muted: #b28aaa;
+      --danger: #ff3b6f;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --shadow-soft: 0 16px 40px rgba(220, 105, 155, 0.22);
+      --shadow-card: 0 16px 40px rgba(212, 151, 207, 0.26);
+      --transition-fast: 0.16s ease-out;
+      --transition-med: 0.24s ease-out;
+      --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-script: "Great Vibes", cursive;
     }
 
     * {
@@ -34,41 +44,76 @@
 
     body {
       min-height: 100vh;
-      background: radial-gradient(circle at top, #2b1144 0, #050208 55%);
-      color: var(--text);
-      font-family: var(--font-main);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
       padding: 24px 16px 40px;
+      font-family: var(--font-main);
+      color: var(--text-main);
+      background: radial-gradient(circle at top left, #ffe2f1 0, #ffeef9 25%, #f4f6ff 60%, #f2fbff 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Corações flutuando de leve */
+    body::before,
+    body::after {
+      content: "❤ ❤ ❤ ❤ ❤ ❤";
+      position: fixed;
+      top: -40px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 40px;
+      color: rgba(255, 140, 180, 0.35);
+      animation: hearts 18s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      animation-duration: 22s;
+      animation-delay: -8s;
+      opacity: 0.6;
+    }
+
+    @keyframes hearts {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      100% {
+        transform: translateY(120vh) translateX(12px);
+      }
     }
 
     .app {
-      width: 100%;
-      max-width: 1120px;
-      background: radial-gradient(circle at top left, #1d102c 0, #09030f 65%);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: var(--shadow-soft);
-      padding: 22px 18px 22px;
       position: relative;
+      width: 100%;
+      max-width: 1180px;
+      background: radial-gradient(circle at top, #ffeef9 0, #ffffff 40%, #fdf7ff 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-card);
+      padding: 20px 18px 22px;
       overflow: hidden;
+      z-index: 1;
     }
 
-    @media (min-width: 720px) {
+    @media (min-width: 768px) {
       .app {
-        padding: 24px 24px 28px;
+        padding: 22px 26px 26px;
       }
     }
 
     .app::before {
       content: "";
       position: absolute;
-      inset: -120px;
+      inset: -40%;
       background:
-        radial-gradient(circle at 0 0, rgba(255, 102, 204, 0.22), transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(102, 204, 255, 0.18), transparent 50%);
-      opacity: 0.8;
+        radial-gradient(circle at 15% 0, rgba(255, 176, 205, 0.8), transparent 60%),
+        radial-gradient(circle at 85% 0, rgba(155, 212, 255, 0.9), transparent 60%);
+      opacity: 0.28;
       pointer-events: none;
       z-index: -1;
     }
@@ -76,55 +121,60 @@
     header {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 14px;
-      align-items: center;
+      gap: 10px 16px;
       justify-content: space-between;
-      margin-bottom: 16px;
+      align-items: center;
+      margin-bottom: 14px;
     }
 
     .title-group {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 4px;
     }
 
     .title-row {
       display: flex;
-      align-items: center;
-      gap: 8px;
       flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
     }
 
     h1 {
-      font-size: 1.1rem;
-      letter-spacing: 0.06em;
+      font-size: 1rem;
       text-transform: uppercase;
-      color: #fdf6ff;
+      letter-spacing: 0.16em;
+      color: #b14581;
+      font-weight: 700;
     }
 
     .tag-love {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: radial-gradient(circle at 0 0, rgba(255, 99, 217, 0.6), transparent 60%),
-        rgba(10, 3, 20, 0.8);
+      border: 1px solid rgba(255, 176, 205, 0.9);
+      background: linear-gradient(135deg, rgba(255, 202, 230, 0.9), rgba(255, 255, 255, 0.9));
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
+      font-size: 0.76rem;
+      color: #b14581;
+      box-shadow: 0 6px 16px rgba(255, 176, 205, 0.5);
     }
 
-    .tag-love span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .tag-love span:first-child {
+      font-size: 1rem;
     }
 
     .subtitle {
-      font-size: 0.83rem;
-      color: var(--muted);
-      opacity: 0.85;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    .names-script {
+      margin-top: 2px;
+      font-family: var(--font-script);
+      font-size: 1.45rem;
+      color: #c35a8d;
     }
 
     .header-actions {
@@ -142,39 +192,52 @@
     .btn {
       border: none;
       border-radius: 999px;
-      padding: 7px 14px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
+      padding: 7px 15px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 7px;
       transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        background var(--transition-fast), opacity var(--transition-fast);
+                  background var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
       white-space: nowrap;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #0b0411;
-      box-shadow: 0 12px 25px rgba(184, 50, 255, 0.35);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(255, 126, 183, 0.65);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(184, 50, 255, 0.45);
+      box-shadow: 0 16px 32px rgba(255, 126, 183, 0.85);
     }
 
     .btn-outline {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-soft);
+      border: 1px solid rgba(244, 183, 213, 0.9);
+      box-shadow: 0 8px 20px rgba(244, 183, 213, 0.4);
     }
 
     .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.06);
+      background: #fff7fb;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-alt {
+      background: transparent;
+      color: var(--text-soft);
+      border: 1px solid rgba(241, 198, 225, 0.9);
+      box-shadow: none;
+    }
+
+    .btn-outline-alt:hover {
+      background: rgba(255, 255, 255, 0.7);
       transform: translateY(-1px);
     }
 
@@ -183,45 +246,49 @@
       width: 30px;
       height: 30px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(244, 183, 213, 0.9);
+      background: #fff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
-      color: var(--muted);
+      color: var(--text-soft);
+      box-shadow: 0 8px 18px rgba(244, 183, 213, 0.6);
     }
 
     .btn-icon:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: #fff3fb;
       transform: translateY(-1px);
     }
 
     .btn-danger {
-      border-color: rgba(255, 75, 110, 0.5);
-      color: #ffc6d4;
+      border-color: rgba(255, 102, 151, 0.9);
+      color: var(--danger);
+      box-shadow: none;
+      background: #fff3f6;
     }
 
     .btn-danger:hover {
-      background: rgba(255, 75, 110, 0.14);
+      background: #ffe1eb;
+      transform: translateY(-1px);
     }
 
     .chip {
       display: inline-flex;
       align-items: center;
-      padding: 2px 8px;
+      padding: 4px 8px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.04);
-      font-size: 0.72rem;
-      color: var(--muted);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(243, 206, 226, 0.8);
+      font-size: 0.7rem;
+      color: var(--text-soft);
       gap: 4px;
     }
 
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
-      gap: 14px;
+      gap: 16px;
       margin-top: 8px;
     }
 
@@ -232,11 +299,11 @@
     }
 
     .card {
-      background: radial-gradient(circle at top, #251437 0, #110616 55%);
+      background: var(--bg-card);
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 14px 14px 16px;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(245, 200, 225, 0.9);
+      padding: 14px 16px 16px;
+      box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
     }
@@ -245,9 +312,8 @@
       content: "";
       position: absolute;
       inset: -40%;
-      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.06), transparent 55%);
-      opacity: 0.6;
-      mix-blend-mode: soft-light;
+      background: radial-gradient(circle at top left, rgba(255, 193, 217, 0.5), transparent 65%);
+      opacity: 0.35;
       pointer-events: none;
       z-index: -1;
     }
@@ -257,103 +323,89 @@
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #fef2ff;
+      color: #b14581;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
     .card-subtitle {
-      font-size: 0.75rem;
-      color: var(--muted);
-      opacity: 0.9;
-      margin-top: 2px;
-    }
-
-    .card-header h3 span {
-      font-size: 0.9rem;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      margin-top: 1px;
     }
 
     .stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 10px;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       .stats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     .stat-card {
-      border-radius: var(--radius-md);
-      padding: 6px 8px 7px;
-      background: rgba(7, 2, 14, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 18px;
+      padding: 8px 10px 9px;
+      background: linear-gradient(135deg, #ffe9f3, #fff);
+      border: 1px solid rgba(245, 200, 225, 0.9);
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 2px;
       position: relative;
       overflow: hidden;
     }
 
-    .stat-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.09), transparent 60%);
-      opacity: 0.5;
-      mix-blend-mode: soft-light;
-      pointer-events: none;
-    }
-
     .stat-label {
       font-size: 0.7rem;
-      color: var(--muted);
+      color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .stat-value {
       font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
     .stat-badge {
-      font-size: 0.7rem;
-      color: #d4c3ff;
-      opacity: 0.9;
+      font-size: 0.72rem;
+      color: var(--text-soft);
     }
 
     .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
       display: inline-block;
-      margin-right: 4px;
     }
 
     .dot-all {
-      background: linear-gradient(135deg, #ffd166, #ff6b6b);
+      background: linear-gradient(135deg, #ffb347, #ff6f69);
     }
 
     .dot-confirmed {
-      background: linear-gradient(135deg, #4ade80, #22c55e);
+      background: linear-gradient(135deg, #34d399, #22c55e);
     }
 
     .dot-maybe {
-      background: linear-gradient(135deg, #facc15, #eab308);
+      background: linear-gradient(135deg, #facc15, #f97316);
     }
 
     .dot-declined {
@@ -363,7 +415,7 @@
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
+      gap: 8px 10px;
       margin-top: 4px;
     }
 
@@ -382,18 +434,18 @@
     label {
       font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
     }
 
     input[type="text"],
     select,
     textarea {
-      background: rgba(4, 2, 8, 0.9);
+      background: #ffffff;
       border-radius: var(--radius-md);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: var(--text);
-      padding: 6px 9px;
+      border: 1px solid rgba(242, 203, 224, 0.9);
+      color: var(--text-main);
+      padding: 7px 10px;
       font-size: 0.82rem;
       outline: none;
       transition: border-color var(--transition-fast),
@@ -411,15 +463,15 @@
     input[type="text"]:focus,
     select:focus,
     textarea:focus {
-      border-color: rgba(184, 50, 255, 0.9);
-      box-shadow: 0 0 0 1px rgba(184, 50, 255, 0.5);
-      background: rgba(8, 2, 18, 0.98);
+      border-color: rgba(255, 134, 193, 0.9);
+      box-shadow: 0 0 0 1px rgba(255, 182, 214, 0.8);
+      background: #fff9fd;
       transform: translateY(-0.5px);
     }
 
     input::placeholder,
     textarea::placeholder {
-      color: rgba(211, 204, 239, 0.6);
+      color: rgba(190, 143, 170, 0.7);
     }
 
     .form-footer {
@@ -427,6 +479,35 @@
       justify-content: flex-end;
       margin-top: 8px;
       gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .edit-notice {
+      margin-top: 8px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(255, 244, 252, 0.9);
+      border: 1px dashed rgba(249, 168, 212, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    .edit-notice strong {
+      color: #c14983;
+    }
+
+    .edit-notice button {
+      font-size: 0.72rem;
+      padding-inline: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 173, 213, 0.9);
+      background: #fff;
+      cursor: pointer;
+      color: var(--text-soft);
     }
 
     .filters {
@@ -451,32 +532,34 @@
     }
 
     .input-inline input {
-      padding-left: 24px;
+      padding-left: 26px;
       padding-right: 9px;
     }
 
     .input-inline span {
       position: absolute;
-      left: 8px;
+      left: 9px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 0.8rem;
-      opacity: 0.7;
+      opacity: 0.65;
     }
 
     .select-compact {
-      padding: 5px 24px 5px 8px;
-      font-size: 0.75rem;
+      padding: 5px 22px 5px 10px;
+      font-size: 0.74rem;
       border-radius: 999px;
-      background: rgba(2, 0, 5, 0.95);
+      background: #fff;
+      border-color: rgba(242, 203, 224, 0.9);
+      color: var(--text-soft);
     }
 
     .table-wrapper {
       max-height: 380px;
       overflow: auto;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(7, 2, 15, 0.92);
+      border-radius: 18px;
+      border: 1px solid rgba(244, 197, 222, 0.98);
+      background: #fffdfd;
     }
 
     table {
@@ -488,25 +571,25 @@
     thead {
       position: sticky;
       top: 0;
-      background: rgba(4, 0, 8, 0.96);
-      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, #fff7fd 0, #ffffff 85%);
       z-index: 2;
     }
 
     th,
     td {
-      padding: 6px 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 7px 8px;
+      border-bottom: 1px solid rgba(244, 205, 224, 0.65);
       text-align: left;
       vertical-align: middle;
     }
 
     th {
       font-size: 0.72rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(227, 217, 255, 0.85);
+      color: var(--text-muted);
       white-space: nowrap;
+      background: transparent;
     }
 
     tbody tr {
@@ -514,25 +597,25 @@
     }
 
     tbody tr:hover {
-      background: rgba(255, 255, 255, 0.03);
+      background: #fff4fb;
       transform: translateY(-0.5px);
     }
 
     .col-name {
-      width: 32%;
+      width: 30%;
     }
 
     .col-side {
-      width: 14%;
+      width: 16%;
       white-space: nowrap;
     }
 
     .col-status {
-      width: 17%;
+      width: 20%;
     }
 
     .col-notes {
-      width: 27%;
+      width: 24%;
     }
 
     .col-actions {
@@ -543,72 +626,75 @@
 
     .status-select {
       width: 100%;
-      padding: 4px 8px;
+      padding: 5px 8px;
       border-radius: 999px;
       font-size: 0.78rem;
       border-width: 1px;
     }
 
     .status-pending {
-      border-color: rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.85);
-      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.8);
+      background: #f9fafb;
+      color: #475569;
     }
 
     .status-confirmed {
-      border-color: rgba(34, 197, 94, 0.9);
-      background: rgba(22, 163, 74, 0.12);
-      color: #bbf7d0;
+      border-color: rgba(34, 197, 94, 0.96);
+      background: #ecfdf3;
+      color: #15803d;
     }
 
     .status-maybe {
-      border-color: rgba(234, 179, 8, 0.9);
-      background: rgba(202, 138, 4, 0.14);
-      color: #fef3c7;
+      border-color: rgba(234, 179, 8, 0.96);
+      background: #fef9c3;
+      color: #92400e;
     }
 
     .status-declined {
-      border-color: rgba(239, 68, 68, 0.9);
-      background: rgba(220, 38, 38, 0.12);
-      color: #fecaca;
+      border-color: rgba(239, 68, 68, 0.96);
+      background: #fef2f2;
+      color: #b91c1c;
     }
 
     .pill-side {
       display: inline-flex;
       align-items: center;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
       font-size: 0.7rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       gap: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(12, 4, 24, 0.9);
-      color: rgba(244, 244, 255, 0.9);
+      border: 1px solid rgba(244, 183, 213, 0.9);
+      background: #fff6fb;
+      color: #b14581;
     }
 
-    .pill-side span {
-      font-size: 0.8rem;
+    .pill-side span:first-child {
+      font-size: 0.85rem;
     }
 
     .side-emilly {
-      border-color: rgba(244, 114, 182, 0.9);
-      background: rgba(236, 72, 153, 0.12);
+      border-color: rgba(248, 173, 213, 0.9);
+      background: #ffe9f7;
+      color: #b14581;
     }
 
     .side-eduardo {
-      border-color: rgba(56, 189, 248, 0.9);
-      background: rgba(37, 99, 235, 0.15);
+      border-color: rgba(188, 222, 255, 0.98);
+      background: #edf5ff;
+      color: #33658a;
     }
 
     .side-both {
-      border-color: rgba(129, 140, 248, 0.9);
-      background: rgba(129, 140, 248, 0.15);
+      border-color: rgba(191, 172, 255, 0.9);
+      background: #f2ecff;
+      color: #5b21b6;
     }
 
     .notes-text {
-      color: rgba(226, 232, 240, 0.9);
-      font-size: 0.8rem;
+      color: var(--text-soft);
+      font-size: 0.78rem;
       max-width: 260px;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -616,7 +702,7 @@
     }
 
     .notes-empty {
-      color: rgba(148, 163, 184, 0.9);
+      color: var(--text-muted);
       font-size: 0.72rem;
       font-style: italic;
     }
@@ -640,9 +726,9 @@
     }
 
     .badge-status-pending {
-      background: rgba(15, 23, 42, 0.85);
-      color: #e2e8f0;
-      border-color: rgba(148, 163, 184, 0.7);
+      background: #f9fafb;
+      color: #64748b;
+      border-color: rgba(148, 163, 184, 0.8);
     }
 
     .badge-status-pending span {
@@ -650,9 +736,9 @@
     }
 
     .badge-status-confirmed {
-      background: rgba(22, 163, 74, 0.12);
-      color: #bbf7d0;
-      border-color: rgba(34, 197, 94, 0.9);
+      background: #ecfdf3;
+      color: #15803d;
+      border-color: rgba(34, 197, 94, 0.96);
     }
 
     .badge-status-confirmed span {
@@ -660,9 +746,9 @@
     }
 
     .badge-status-maybe {
-      background: rgba(202, 138, 4, 0.14);
-      color: #fef3c7;
-      border-color: rgba(234, 179, 8, 0.9);
+      background: #fef9c3;
+      color: #92400e;
+      border-color: rgba(234, 179, 8, 0.96);
     }
 
     .badge-status-maybe span {
@@ -670,33 +756,27 @@
     }
 
     .badge-status-declined {
-      background: rgba(220, 38, 38, 0.12);
-      color: #fecaca;
-      border-color: rgba(239, 68, 68, 0.9);
+      background: #fef2f2;
+      color: #b91c1c;
+      border-color: rgba(239, 68, 68, 0.96);
     }
 
     .badge-status-declined span {
       background: linear-gradient(135deg, #fb7185, #ef4444);
     }
 
-    .text-small {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
     .footer-note {
       margin-top: 10px;
       font-size: 0.74rem;
-      color: rgba(209, 213, 219, 0.9);
+      color: var(--text-soft);
       display: flex;
       justify-content: space-between;
       gap: 8px;
       flex-wrap: wrap;
-      opacity: 0.9;
     }
 
     .footer-note strong {
-      color: #f9fafb;
+      color: #b14581;
     }
 
     .highlight {
@@ -705,9 +785,9 @@
     }
 
     .empty-state {
-      padding: 16px;
+      padding: 20px 14px;
       text-align: center;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.8rem;
     }
 
@@ -717,8 +797,15 @@
     }
 
     .empty-state .emoji {
-      font-size: 1.4rem;
-      margin-bottom: 2px;
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 6px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
     }
   </style>
 </head>
@@ -736,13 +823,16 @@
         <div class="subtitle">
           Controle de presença, organização e amor em um só lugar.
         </div>
+        <div class="names-script">
+          Eduardo &amp; Emilly
+        </div>
       </div>
       <div class="header-actions">
         <button type="button" class="btn btn-outline" id="loadDefaultBtn">
           💫 Carregar lista Eduardo &amp; Emilly
         </button>
-        <button type="button" class="btn btn-outline" id="clearAllBtn">
-          🧹 Limpar tudo
+        <button type="button" class="btn btn-outline-alt" id="clearAllBtn">
+          ✨ Limpar tudo
         </button>
       </div>
     </header>
@@ -789,15 +879,15 @@
           <div>
             <div class="card-title">
               <span>➕</span>
-              <span>Novo convidado</span>
+              <span id="formTitle">Novo convidado</span>
             </div>
-            <div class="card-subtitle">
+            <div class="card-subtitle" id="formSubtitle">
               Adicione pessoas e mantenha tudo organizado.
             </div>
           </div>
           <div class="chip">
             💾
-            <span class="text-small">Salvo automaticamente no navegador</span>
+            <span>Salvo automaticamente no navegador</span>
           </div>
         </div>
 
@@ -839,11 +929,17 @@
               />
             </div>
           </div>
+
+          <div id="editNotice" class="edit-notice" style="display:none;">
+            <span>✏️ Editando: <strong id="editNameLabel"></strong></span>
+            <button type="button" id="cancelEditBtn">Cancelar edição</button>
+          </div>
+
           <div class="form-footer">
-            <button type="button" class="btn btn-outline" id="resetFormBtn">
+            <button type="button" class="btn btn-outline-alt" id="resetFormBtn">
               Limpar campos
             </button>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
               💌 Adicionar convidado
             </button>
           </div>
@@ -872,7 +968,6 @@
                 type="text"
                 id="searchInput"
                 placeholder="Buscar por nome..."
-                style="padding-right: 26px;"
               />
             </div>
             <select id="filterSide" class="select-compact">
@@ -891,9 +986,15 @@
             </select>
           </div>
           <div class="filters-right">
-            <button type="button" class="btn-icon" id="exportJsonBtn" title="Exportar como JSON">
-              ⬇️
-            </button>
+            <div class="btn-row">
+              <button type="button" class="btn-outline-alt btn" id="importBtn">
+                ⬆️ Importar
+              </button>
+              <button type="button" class="btn-outline btn" id="exportJsonBtn">
+                ⬇️ Exportar
+              </button>
+            </div>
+            <input type="file" id="importFileInput" accept="application/json" style="display:none;" />
           </div>
         </div>
 
@@ -912,7 +1013,7 @@
               <!-- Linhas geradas via JS -->
             </tbody>
           </table>
-          <div class="empty-state" id="emptyState" style="display: none;">
+          <div class="empty-state" id="emptyState" style="display:none;">
             <div class="emoji">✨</div>
             <span>Sem convidados ainda...</span>
             <span>
@@ -928,15 +1029,13 @@
         <strong>Dica:</strong> este controle fica salvo no seu navegador. Se limpar o cache ou usar outro dispositivo, a lista some.
       </div>
       <div>
-        Feito com <span class="highlight">💜 amor</span> pro casamento de vocês.
+        Feito com <span class="highlight">amor</span> pro casamento de vocês. 💗
       </div>
     </div>
   </div>
 
   <script>
-    // ------------------------------
-    // Dados iniciais da lista padrão
-    // ------------------------------
+    // ------------ Dados iniciais da lista padrão -------------
     const defaultGuests = [
       // Parte da Emilly
       { name: "Elza", side: "Emilly" },
@@ -1018,15 +1117,28 @@
       { name: "Filha Aderlan", side: "Eduardo" }
     ];
 
-    // ------------------------------
-    // Estado principal
-    // ------------------------------
+    // ----------------------- Estado principal -----------------------
     let guests = [];
     const STORAGE_KEY = "wedding-guests-eduardo-emilly";
+    let editingId = null;
 
-    // ------------------------------
-    // Helpers
-    // ------------------------------
+    // ----------------------- Helpers -----------------------
+    function createGuestId() {
+      return (
+        Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8)
+      );
+    }
+
+    function normalizeGuest(g) {
+      return {
+        id: g.id || createGuestId(),
+        name: g.name || "",
+        side: g.side || "Outro",
+        status: g.status || "pending",
+        notes: g.notes || ""
+      };
+    }
+
     function saveGuests() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(guests));
     }
@@ -1036,15 +1148,13 @@
       if (!raw) return [];
       try {
         const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) return parsed;
+        if (Array.isArray(parsed)) {
+          return parsed.map(normalizeGuest);
+        }
       } catch (e) {
         console.warn("Erro ao ler localStorage:", e);
       }
       return [];
-    }
-
-    function createGuestId() {
-      return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
     }
 
     function statusLabel(status) {
@@ -1063,13 +1173,10 @@
     function sideLabel(side) {
       switch (side) {
         case "Emilly":
-          return "Emilly";
         case "Eduardo":
-          return "Eduardo";
         case "Ambos":
-          return "Ambos";
         case "Outro":
-          return "Outro";
+          return side;
         default:
           return side || "N/D";
       }
@@ -1135,8 +1242,7 @@
       if (total === 0) {
         statTotalSide.textContent = "";
       } else {
-        statTotalSide.textContent =
-          `Emilly: ${emillyCount} · Eduardo: ${eduardoCount}`;
+        statTotalSide.textContent = `Emilly: ${emillyCount} · Eduardo: ${eduardoCount}`;
       }
     }
 
@@ -1162,7 +1268,6 @@
 
       if (filtered.length === 0) {
         emptyState.style.display = "block";
-        return;
       } else {
         emptyState.style.display = "none";
       }
@@ -1186,6 +1291,8 @@
             ? "💜"
             : guest.side === "Eduardo"
             ? "💙"
+            : guest.side === "Ambos"
+            ? "💗"
             : "🤍"
         }</span><span>${sideLabel(guest.side)}</span>`;
         tdSide.appendChild(pill);
@@ -1194,6 +1301,7 @@
         // Status
         const tdStatus = document.createElement("td");
         tdStatus.className = "col-status";
+
         const select = document.createElement("select");
         select.className = `status-select ${statusClass(guest.status)}`;
         select.innerHTML = `
@@ -1206,6 +1314,8 @@
         select.addEventListener("change", () => {
           guest.status = select.value;
           select.className = `status-select ${statusClass(guest.status)}`;
+          badge.className = statusBadgeClass(guest.status || "pending");
+          badgeLabel.textContent = statusLabel(guest.status);
           saveGuests();
           updateStats();
         });
@@ -1214,10 +1324,10 @@
         const badge = document.createElement("div");
         badge.className = statusBadgeClass(guest.status || "pending");
         const dot = document.createElement("span");
-        const label = document.createElement("span");
-        label.textContent = statusLabel(guest.status);
+        const badgeLabel = document.createElement("span");
+        badgeLabel.textContent = statusLabel(guest.status);
         badge.appendChild(dot);
-        badge.appendChild(label);
+        badge.appendChild(badgeLabel);
         badge.style.marginTop = "4px";
         tdStatus.appendChild(badge);
 
@@ -1243,6 +1353,16 @@
         const tdActions = document.createElement("td");
         tdActions.className = "col-actions";
 
+        const editBtn = document.createElement("button");
+        editBtn.type = "button";
+        editBtn.className = "btn-icon";
+        editBtn.title = "Editar convidado";
+        editBtn.textContent = "✏️";
+        editBtn.style.marginRight = "4px";
+        editBtn.addEventListener("click", () => {
+          startEditGuest(guest);
+        });
+
         const deleteBtn = document.createElement("button");
         deleteBtn.type = "button";
         deleteBtn.className = "btn-icon btn-danger";
@@ -1261,6 +1381,7 @@
           }
         });
 
+        tdActions.appendChild(editBtn);
         tdActions.appendChild(deleteBtn);
         tr.appendChild(tdActions);
 
@@ -1268,17 +1389,106 @@
       });
     }
 
-    // ------------------------------
-    // Inicialização
-    // ------------------------------
+    // ----------------------- Edição -----------------------
+    function startEditGuest(guest) {
+      editingId = guest.id;
+      document.getElementById("guestName").value = guest.name;
+      document.getElementById("guestSide").value = guest.side;
+      document.getElementById("guestStatus").value = guest.status || "pending";
+      document.getElementById("guestNotes").value = guest.notes || "";
+
+      document.getElementById("editNotice").style.display = "flex";
+      document.getElementById("editNameLabel").textContent = guest.name;
+      document.getElementById("submitBtn").innerHTML = "💾 Salvar alterações";
+      document.getElementById("formTitle").textContent = "Editar convidado";
+      document.getElementById("formSubtitle").textContent =
+        "Ajuste as informações e salve para atualizar a lista.";
+      document.getElementById("guestName").focus();
+    }
+
+    function cancelEdit() {
+      editingId = null;
+      document.getElementById("guestForm").reset();
+      document.getElementById("guestSide").value = "Emilly";
+      document.getElementById("guestStatus").value = "pending";
+      document.getElementById("editNotice").style.display = "none";
+      document.getElementById("submitBtn").innerHTML = "💌 Adicionar convidado";
+      document.getElementById("formTitle").textContent = "Novo convidado";
+      document.getElementById("formSubtitle").textContent =
+        "Adicione pessoas e mantenha tudo organizado.";
+    }
+
+    // ----------------------- Exportar / Importar -----------------------
+    function exportGuests() {
+      if (!guests.length) {
+        alert("Não há convidados para exportar.");
+        return;
+      }
+      const data = JSON.stringify(guests, null, 2);
+      const blob = new Blob([data], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "convidados-eduardo-emilly.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function handleImportFile(file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (!Array.isArray(data)) {
+            alert("Arquivo inválido: o conteúdo não é uma lista.");
+            return;
+          }
+          const normalized = data.map(normalizeGuest);
+
+          if (guests.length > 0) {
+            const replace = confirm(
+              "Deseja SUBSTITUIR a lista atual pelos convidados do arquivo?\n\nOK = substituir tudo\nCancelar = mesclar (apenas novos nomes)."
+            );
+            if (replace) {
+              guests = normalized;
+            } else {
+              const existingKeys = new Set(
+                guests.map(g => (g.id ? g.id : g.name.toLowerCase() + "|" + g.side))
+              );
+              normalized.forEach(ng => {
+                const key = ng.id ? ng.id : ng.name.toLowerCase() + "|" + ng.side;
+                if (!existingKeys.has(key)) {
+                  guests.push(ng);
+                }
+              });
+            }
+          } else {
+            guests = normalized;
+          }
+
+          saveGuests();
+          updateStats();
+          renderGuests();
+          alert("Convidados importados com sucesso!");
+        } catch (err) {
+          console.error(err);
+          alert("Erro ao importar arquivo. Verifique se é um JSON válido.");
+        }
+      };
+      reader.readAsText(file, "utf-8");
+    }
+
+    // ----------------------- Inicialização -----------------------
     function init() {
       guests = loadGuests();
       updateStats();
       renderGuests();
 
-      // Formulário
       const form = document.getElementById("guestForm");
       const resetFormBtn = document.getElementById("resetFormBtn");
+      const cancelEditBtn = document.getElementById("cancelEditBtn");
       const nameInput = document.getElementById("guestName");
       const sideInput = document.getElementById("guestSide");
       const statusInput = document.getElementById("guestStatus");
@@ -1289,22 +1499,37 @@
         const name = nameInput.value.trim();
         if (!name) return;
 
-        const newGuest = {
-          id: createGuestId(),
-          name,
-          side: sideInput.value || "Outro",
-          status: statusInput.value || "pending",
-          notes: notesInput.value.trim()
-        };
-
-        guests.push(newGuest);
-        saveGuests();
-        updateStats();
-        renderGuests();
-        form.reset();
-        sideInput.value = "Emilly";
-        statusInput.value = "pending";
-        nameInput.focus();
+        if (editingId) {
+          // Atualiza convidado existente
+          const guest = guests.find(g => g.id === editingId);
+          if (guest) {
+            guest.name = name;
+            guest.side = sideInput.value || "Outro";
+            guest.status = statusInput.value || "pending";
+            guest.notes = notesInput.value.trim();
+          }
+          saveGuests();
+          updateStats();
+          renderGuests();
+          cancelEdit();
+        } else {
+          // Novo convidado
+          const newGuest = normalizeGuest({
+            id: createGuestId(),
+            name,
+            side: sideInput.value || "Outro",
+            status: statusInput.value || "pending",
+            notes: notesInput.value.trim()
+          });
+          guests.push(newGuest);
+          saveGuests();
+          updateStats();
+          renderGuests();
+          form.reset();
+          sideInput.value = "Emilly";
+          statusInput.value = "pending";
+          nameInput.focus();
+        }
       });
 
       resetFormBtn.addEventListener("click", () => {
@@ -1314,44 +1539,53 @@
         nameInput.focus();
       });
 
+      cancelEditBtn.addEventListener("click", cancelEdit);
+
       // Filtros
-      document.getElementById("searchInput").addEventListener("input", renderGuests);
-      document.getElementById("filterSide").addEventListener("change", renderGuests);
-      document.getElementById("filterStatus").addEventListener("change", renderGuests);
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", renderGuests);
+      document
+        .getElementById("filterSide")
+        .addEventListener("change", renderGuests);
+      document
+        .getElementById("filterStatus")
+        .addEventListener("change", renderGuests);
 
-      // Botão carregar lista padrão
-      document.getElementById("loadDefaultBtn").addEventListener("click", () => {
-        const proceed =
-          guests.length === 0 ||
-          confirm(
-            "Isso vai adicionar os convidados padrão Eduardo & Emilly à lista atual.\n\nDeseja continuar?"
+      // Carregar lista padrão
+      document
+        .getElementById("loadDefaultBtn")
+        .addEventListener("click", () => {
+          const proceed =
+            guests.length === 0 ||
+            confirm(
+              "Isso vai adicionar os convidados padrão Eduardo & Emilly à lista atual (sem duplicar nomes).\n\nDeseja continuar?"
+            );
+          if (!proceed) return;
+
+          const existingKeys = new Set(
+            guests.map(g => g.name.toLowerCase() + "|" + g.side)
           );
+          defaultGuests.forEach(g => {
+            const key = g.name.toLowerCase() + "|" + g.side;
+            if (!existingKeys.has(key)) {
+              guests.push(
+                normalizeGuest({
+                  name: g.name,
+                  side: g.side,
+                  status: "pending",
+                  notes: ""
+                })
+              );
+            }
+          });
 
-        if (!proceed) return;
-
-        const existingNames = new Set(
-          guests.map(g => `${g.name.toLowerCase()}|${g.side}`)
-        );
-
-        defaultGuests.forEach(g => {
-          const key = `${g.name.toLowerCase()}|${g.side}`;
-          if (!existingNames.has(key)) {
-            guests.push({
-              id: createGuestId(),
-              name: g.name,
-              side: g.side,
-              status: "pending",
-              notes: ""
-            });
-          }
+          saveGuests();
+          updateStats();
+          renderGuests();
         });
 
-        saveGuests();
-        updateStats();
-        renderGuests();
-      });
-
-      // Botão limpar tudo
+      // Limpar tudo
       document.getElementById("clearAllBtn").addEventListener("click", () => {
         if (
           confirm(
@@ -1362,27 +1596,26 @@
           saveGuests();
           updateStats();
           renderGuests();
+          cancelEdit();
         }
       });
 
-      // Exportar JSON (só exibe em prompt)
-      document.getElementById("exportJsonBtn").addEventListener("click", () => {
-        if (guests.length === 0) {
-          alert("Não há convidados para exportar.");
-          return;
-        }
-        const data = JSON.stringify(guests, null, 2);
-        // Mostra um prompt simplão com o JSON (pra copiar)
-        const w = window.open("", "_blank");
-        if (w) {
-          w.document.write(
-            "<pre style='white-space: pre-wrap; font-family: monospace; font-size: 13px;'>" +
-              data.replace(/</g, "&lt;") +
-              "</pre>"
-          );
-          w.document.close();
-        } else {
-          alert("Copie os dados a seguir:\n\n" + data);
+      // Exportar
+      document
+        .getElementById("exportJsonBtn")
+        .addEventListener("click", exportGuests);
+
+      // Importar
+      const importBtn = document.getElementById("importBtn");
+      const importInput = document.getElementById("importFileInput");
+      importBtn.addEventListener("click", () => {
+        importInput.value = "";
+        importInput.click();
+      });
+      importInput.addEventListener("change", e => {
+        const file = e.target.files && e.target.files[0];
+        if (file) {
+          handleImportFile(file);
         }
       });
     }
